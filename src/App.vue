@@ -1,19 +1,36 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>App 组件</h1>
+    <Avatar
+      url="https://mmbiz.qpic.cn/sz_mmbiz_jpg/IhB6Hhm1o7fqEWXUPvudN0FxFVEg2kOicrNTrJth4dPgJ4TR8niccamz2oI7l8uDSfiaDrsJWpov0KuDJHSVIHPVw/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1"
+      :size="100"
+    />
+    <Icon type="home" />
+    <Pager :current="current" :total="505" :visibleNumber="7" @pageChange="handlePageChange"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Avatar from "./components/Avatar.vue";
+import Icon from "./components/Icon.vue";
+import Pager from "./components/Pager.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    Avatar,
+    Icon,
+    Pager,
+  },
+  data(){
+    return { current: 1 };
+  },
+  methods: {
+    handlePageChange(newPage){
+      this.current = newPage;
+    }
   }
-}
+};
 </script>
 
 <style lang="less">
