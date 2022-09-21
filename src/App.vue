@@ -1,19 +1,33 @@
 <template>
   <div id="app">
-    <h1>App 组件</h1>
-    <Avatar
-      url="https://mmbiz.qpic.cn/sz_mmbiz_jpg/IhB6Hhm1o7fqEWXUPvudN0FxFVEg2kOicrNTrJth4dPgJ4TR8niccamz2oI7l8uDSfiaDrsJWpov0KuDJHSVIHPVw/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1"
-      :size="100"
-    />
-    <Icon type="home" />
-    <Pager :current="current" :total="505" :visibleNumber="7" @pageChange="handlePageChange"/>
+    <Layout>
+      <template #left>
+        <div class="aside">
+          <SiteAside />
+        </div>
+      </template>
+      <template #default>
+        <div class="main">
+          <RouterView />
+        </div>
+      </template>
+      <!-- <template #right>
+        <div class="right">右边区域</div>
+      </template> -->
+    </Layout>
   </div>
 </template>
 
 <script>
-import Avatar from "./components/Avatar.vue";
-import Icon from "./components/Icon.vue";
-import Pager from "./components/Pager.vue";
+import Avatar from "@/components/Avatar";
+import Icon from "@/components/Icon";
+import Pager from "@/components/Pager";
+import Empty from "@/components/Empty";
+import ImageLoader from "@/components/ImageLoader";
+import Contact from "@/components/SiteAside/Contact";
+import Menu from "@/components/SiteAside/Menu";
+import SiteAside from "@/components/SiteAside";
+import Layout from "./components/Layout";
 
 export default {
   name: "App",
@@ -21,25 +35,43 @@ export default {
     Avatar,
     Icon,
     Pager,
+    Empty,
+    ImageLoader,
+    Contact,
+    Menu,
+    SiteAside,
+    Layout,
+    SiteAside,
   },
-  data(){
+  data() {
     return { current: 1 };
   },
   methods: {
-    handlePageChange(newPage){
+    handlePageChange(newPage) {
       this.current = newPage;
-    }
-  }
+    },
+    handleLoaded() {},
+  },
 };
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
+@import "~@/styles/mixin.less";
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  .self-fill(fixed);
+  background: #f0f0f0;
+}
+.left {
+  width: 200px;
+  height: 100%;
+}
+.main {
+  width: 100%;
+  height: 100%;
+}
+.right {
+  width: 100px;
+  height: 100%;
 }
 </style>
