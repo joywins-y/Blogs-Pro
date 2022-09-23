@@ -4,6 +4,10 @@ import "./styles/global.less";
 import router from "./router";
 import { showMessage } from "./utils";
 
+import "./mock/banner";
+import "./api/banner";
+// import "./api/test";
+
 Vue.config.productionTip = false;
 
 Vue.prototype.$showMessage = showMessage;
