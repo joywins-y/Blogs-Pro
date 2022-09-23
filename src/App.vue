@@ -65,6 +65,9 @@ export default {
 .left {
   width: 200px;
   height: 100%;
+  .aside {
+    height: 100%;
+  }
 }
 .main {
   width: 100%;

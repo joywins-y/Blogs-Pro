@@ -7,7 +7,7 @@
     <h1 class="title">Windy</h1>
     <Menu />
     <Contact />
-    <p class="footer">备案号</p>
+    <p class="footer">备案号：20221013 号</p>
   </div>
 </template>
 
@@ -33,6 +33,7 @@ export default {
   box-sizing: border-box;
   overflow-x: hidden;
   overflow-y: auto;
+  position: relative;
 }
 
 .avatar-container {
@@ -46,8 +47,13 @@ export default {
 }
 
 .footer {
+  position: absolute;
   text-align: center;
   font-size: 12px;
   color: #999;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: 30px;
 }
 </style>
