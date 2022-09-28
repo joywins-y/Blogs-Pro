@@ -1,8 +1,7 @@
-import axios from "axios";
+import request from "./request";
 
 export async function getBanners() {
-  const resp = await axios.get("/api/banner");
-  console.log(resp.data);
+  return await request.get("/api/banner");
 }
 
-getBanners();
+getBanners().then((res) => console.log(res));
