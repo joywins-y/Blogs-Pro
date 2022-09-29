@@ -1,13 +1,13 @@
 <template>
   <div class="layout-container">
     <div class="left">
-      <slot name="left">left</slot>
+      <slot name="left"></slot>
     </div>
     <div class="main">
       <slot></slot>
     </div>
     <div class="right">
-      <slot name="right">right</slot>
+      <slot name="right"></slot>
     </div>
   </div>
 </template>

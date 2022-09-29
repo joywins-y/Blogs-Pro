@@ -12,7 +12,7 @@
       }"
       @transitionend="handleTransitionEnd"
     >
-      <li v-for="item in banners" :key="item.id">
+      <li v-for="item in data" :key="item.id">
         <CarouselItem :carousel="item" />
       </li>
     </ul>
@@ -20,7 +20,7 @@
       <Icon type="arrowUp" />
     </div>
     <div
-      v-show="index < banners.length - 1"
+      v-show="index < data.length - 1"
       class="icon icon-down"
       @click="switchTo(index + 1)"
     >
@@ -29,7 +29,7 @@
 
     <ul class="indicator">
       <li
-        v-for="(item, idx) in banners"
+        v-for="(item, idx) in data"
         :key="item.id"
         :class="{ active: idx === index }"
         @click="switchTo(idx)"
@@ -43,25 +43,27 @@ import { getBanners } from "@/api/banner";
 import CarouselItem from "./CarouselItem.vue";
 import Icon from "@/components/Icon/index.vue";
 import Loading from "@/components/Loading/index.vue";
+import fetchData from "@/mixins/fechData.js";
 
 export default {
   props: {},
+  mixins: [fetchData([])],
   components: { CarouselItem, Icon, Loading },
   data() {
     return {
-      banners: [],
+      // banners: [],
       index: 0, // 当前显示的轮播图索引
       containerHeight: 0, // 容器高度
       switching: false, // 是否正在翻页中
-      isLoading: true,
+      // isLoading: true,
     };
   },
-  async created() {
-    this.banners = await getBanners();
-    this.isLoading = false;
-  },
+  // async created() {
+  //   this.banners = await getBanners();
+  //   this.isLoading = false;
+  // },
   updated() {
-    console.log("update");
+    // console.log("update");
   },
   mounted() {
     this.containerHeight = this.$refs.container.clientHeight;
@@ -88,7 +90,7 @@ export default {
       if (e.deltaY < -5 && this.index > 0) {
         this.index--;
         this.switching = true;
-      } else if (e.deltaY > 5 && this.index < this.banners.length - 1) {
+      } else if (e.deltaY > 5 && this.index < this.data.length - 1) {
         this.index++;
         this.switching = true;
       }
@@ -98,6 +100,9 @@ export default {
     },
     handleResize() {
       this.containerHeight = this.$refs.container.clientHeight;
+    },
+    async fetchData() {
+      return await getBanners();
     },
   },
 };

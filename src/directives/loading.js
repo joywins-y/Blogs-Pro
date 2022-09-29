@@ -41,8 +41,6 @@ function createLoadingDom() {
 export default function (el, binding) {
   // 根据 binding.value 的值，决定创建或删除 dom 元素
   const curDom = getLoadingDom(el);
-
-  console.log(binding);
   if (binding.value) {
     // 创建
     if (!curDom) {
