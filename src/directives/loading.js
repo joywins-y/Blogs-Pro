@@ -5,22 +5,14 @@ import { getComponentRootDom } from "@/utils";
 // export default {
 //   // 只执行一次
 //   bind(el, binding) {
-//     console.log("bind");
-//     console.log(el);
-//     console.log(binding);
-//     console.log("========================");
+//     console.log("bind", el, binding);
 //     // 创建一个 dom 元素，放到 el 元素内部
 //   },
 //   inserted(el, binding) {
-//     console.log("inserted");
-//     console.log(el);
-//     console.log(binding);
-//     console.log("========================");
+//     console.log("inserted", el, binding);
 //   },
 //   update(el, binding) {
-//     console.log("update");
-//     console.log(el);
-//     console.log(binding);
+//     console.log("update", el, binding);
 //     // 根据 binding.value 的值，决定创建或删除 dom 元素
 //   },
 // };

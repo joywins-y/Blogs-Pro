@@ -43,7 +43,7 @@ import { getBanners } from "@/api/banner";
 import CarouselItem from "./CarouselItem.vue";
 import Icon from "@/components/Icon/index.vue";
 import Loading from "@/components/Loading/index.vue";
-import fetchData from "@/mixins/fechData.js";
+import fetchData from "@/mixins/fetchData.js";
 
 export default {
   props: {},

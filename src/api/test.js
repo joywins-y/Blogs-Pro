@@ -5,7 +5,7 @@ async function getNews() {
     // "http://localhost:8080/commercial_api/banners_v3/home_up?"
     "/commercial_api/banners_v3/home_up?"
   );
-  console.log(resp.data);
+  // console.log(resp.data);
 }
 
 getNews();

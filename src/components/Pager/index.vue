@@ -91,6 +91,7 @@
       border: 1px solid #d9d9d9;
       border-radius: 2px;
       background: #fff;
+      text-align: center;
       &:hover {
         color: @primary;
       }
