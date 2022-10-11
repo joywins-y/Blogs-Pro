@@ -5,6 +5,7 @@ import "./styles/global.less";
 import router from "./router";
 import { showMessage } from "./utils";
 import vLoading from "./directives/loading";
+import './eventBus';
 
 Vue.config.productionTip = false;
 

@@ -4,11 +4,16 @@
       <span :class="{ active: item.isSelect }" @click="handleClick(item)">
         {{ item.name }}
       </span>
-      <span v-if="item.aside" class="aside" @click="handleClick(item)">
+      <span
+        v-if="item.aside"
+        class="aside"
+        @click="handleClick(item)"
+        :class="{ active: item.isSelect }"
+      >
         {{ item.aside }}
       </span>
       <!-- 显示当前组件 -->
-      <Directory :list="item.children" @select="handleSelect" />
+      <Directory :list="item.children" @select="handleClick" />
     </li>
   </ul>
 </template>
@@ -24,9 +29,6 @@ export default {
       if (!item.isSelect) {
         this.$emit("select", item);
       }
-    },
-    handleSelect(item) {
-      // console.log(item);
     },
   },
 };

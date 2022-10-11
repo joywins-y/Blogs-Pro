@@ -15,42 +15,21 @@
         <div class="right">右边区域</div>
       </template> -->
     </Layout>
+    <ToTop />
   </div>
 </template>
 
 <script>
-import Avatar from "@/components/Avatar";
-import Icon from "@/components/Icon";
-import Pager from "@/components/Pager";
-import Empty from "@/components/Empty";
-import ImageLoader from "@/components/ImageLoader";
-import Contact from "@/components/SiteAside/Contact";
-import Menu from "@/components/SiteAside/Menu";
 import SiteAside from "@/components/SiteAside";
 import Layout from "./components/Layout";
+import ToTop from "./components/ToTop/index.vue";
 
 export default {
   name: "App",
   components: {
-    Avatar,
-    Icon,
-    Pager,
-    Empty,
-    ImageLoader,
-    Contact,
-    Menu,
     SiteAside,
     Layout,
-    SiteAside,
-  },
-  data() {
-    return { current: 1 };
-  },
-  methods: {
-    handlePageChange(newPage) {
-      this.current = newPage;
-    },
-    handleLoaded() {},
+    ToTop,
   },
 };
 </script>

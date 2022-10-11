@@ -59,6 +59,9 @@ export default {
   width: 300px;
   box-sizing: border-box;
   padding: 24px;
+  position: relative;
+  height: 100%;
+  overflow-y: auto;
   h2 {
     font-weight: bold;
     letter-spacing: 2px;

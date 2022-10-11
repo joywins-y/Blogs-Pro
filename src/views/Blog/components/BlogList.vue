@@ -3,22 +3,30 @@
     <ul>
       <li v-for="item in data.rows" :key="item.id">
         <div class="thumb" v-if="item.thumb">
-          <a href="">
+          <RouterLink :to="{ name: 'blogDetail', params: { id: item.id } }">
             <!-- src="https://img3.jiemian.com/101/original/20170531/14962293429372900_a640x364.jpg" -->
             <img :src="item.thumb" :alt="item.title" :title="item.title" />
-          </a>
+          </RouterLink>
         </div>
         <div class="main">
-          <a href="">
+          <RouterLink :to="{ name: 'blogDetail', params: { id: item.id } }">
             <h2>{{ item.title }}</h2>
-          </a>
+          </RouterLink>
           <div class="aside">
             <span>日期：{{ formatDate(item.createDate) }}</span>
             <span>浏览：{{ item.scanNumber }}</span>
             <span>评论：{{ item.commentNumber }}</span>
-            <a :href="`/blog/category/${item.category.id}`" class="">{{
-              item.category.name
-            }}</a>
+            <RouterLink
+              :to="{
+                name: 'categoryBlog',
+                params: {
+                  categoryId: item.category.id,
+                },
+              }"
+              class=""
+            >
+              {{ item.category.name }}
+            </RouterLink>
           </div>
           <div class="desc">
             {{ item.description }}
@@ -52,7 +60,15 @@ export default {
     return {};
   },
   async created() {},
-  mounted() {},
+  mounted() {
+    this.$bus.$on("setMainScroll", this.handleSetScroll);
+    this.$refs.conatiner.addEventListener("scroll", this.handleScroll);
+  },
+  beforeDestroy() {
+    this.$bus.$emit("mainScroll");
+    this.$refs.conatiner.removeEventListener("scroll", this.handleScroll);
+    this.$bus.$off("setMainScroll", this.handleSetScroll);
+  },
   computed: {
     /** 路由信息 */
     routeInfo() {
@@ -91,6 +107,12 @@ export default {
           params: { categoryId: this.routeInfo.categoryId },
         });
       }
+    },
+    handleScroll() {
+      this.$bus.$emit("mainScroll", this.$refs.conatiner);
+    },
+    handleSetScroll(scrollTop) {
+      this.$refs.conatiner.scrollTop = scrollTop;
     },
   },
   watch: {
