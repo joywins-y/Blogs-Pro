@@ -5,7 +5,8 @@
         <div class="thumb" v-if="item.thumb">
           <RouterLink :to="{ name: 'blogDetail', params: { id: item.id } }">
             <!-- src="https://img3.jiemian.com/101/original/20170531/14962293429372900_a640x364.jpg" -->
-            <img :src="item.thumb" :alt="item.title" :title="item.title" />
+            <!-- <img :src="item.thumb" :alt="item.title" :title="item.title" /> -->
+            <img v-lazy="item.thumb" :alt="item.title" :title="item.title" />
           </RouterLink>
         </div>
         <div class="main">

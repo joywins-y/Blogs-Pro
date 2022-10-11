@@ -5,6 +5,7 @@ import "./styles/global.less";
 import router from "./router";
 import { showMessage } from "./utils";
 import vLoading from "./directives/loading";
+import vLazy from "./directives/lazy";
 import './eventBus';
 
 Vue.config.productionTip = false;
@@ -12,6 +13,7 @@ Vue.config.productionTip = false;
 Vue.prototype.$showMessage = showMessage;
 
 Vue.directive("loading", vLoading);
+Vue.directive("lazy", vLazy);
 
 new Vue({
   router,

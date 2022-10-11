@@ -30,6 +30,7 @@ function createLoadingDom() {
   return dom;
 }
 
+/** 导出指令的配置对象 */
 export default function (el, binding) {
   // 根据 binding.value 的值，决定创建或删除 dom 元素
   const curDom = getLoadingDom(el);
