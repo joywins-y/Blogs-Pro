@@ -50,25 +50,13 @@
 import { getBlogs } from "@/api/blog";
 import Pager from "@/components/Pager/index.vue";
 import fetchData from "@/mixins/fetchData";
+import mainScroll from "@/mixins/mainScroll";
 import { formatDate } from "@/utils";
 
 export default {
-  mixins: [fetchData({})],
+  mixins: [fetchData({}), mainScroll("conatiner")],
   props: {},
   components: { Pager },
-  data() {
-    return {};
-  },
-  async created() {},
-  mounted() {
-    this.$bus.$on("setMainScroll", this.handleSetScroll);
-    this.$refs.conatiner.addEventListener("scroll", this.handleScroll);
-  },
-  beforeDestroy() {
-    this.$bus.$emit("mainScroll");
-    this.$refs.conatiner.removeEventListener("scroll", this.handleScroll);
-    this.$bus.$off("setMainScroll", this.handleSetScroll);
-  },
   computed: {
     /** 路由信息 */
     routeInfo() {
@@ -107,12 +95,6 @@ export default {
           params: { categoryId: this.routeInfo.categoryId },
         });
       }
-    },
-    handleScroll() {
-      this.$bus.$emit("mainScroll", this.$refs.conatiner);
-    },
-    handleSetScroll(scrollTop) {
-      this.$refs.conatiner.scrollTop = scrollTop;
     },
   },
   watch: {
