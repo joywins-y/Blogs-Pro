@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .wrapper {
+        width: 100%;
+        max-width: 1180px;
+        background-color: #fff;
+        display: flex;
+      }
+      .left_container {
+        max-width: 472px;
+        width: 35%;
+        min-height: 100%;
+        background-color: #eee;
+        padding: 16px 24px;
+      }
+      .left_container .avatar {
+        text-align: center;
+        margin: 50px auto 0;
+        width: 150px;
+        height: 150px;
+        /* border-radius: 50%; */
+        display: flex;
+        align-items: center;
+        /* align-items: center;
+        justify-content: center; */
+        overflow: hidden;
+      }
+
+      .left_container .avatar img {
+        width: 170px;
+        height: 170px;
+        object-fit: contain;
+      }
+
+      .basic_info {
+      }
+      .basic_info div {
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+      }
+
+      .basic_info div span {
+        color: #555;
+      }
+
+      .basic_info div img {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+      }
+
+      .self_evaluation,
+      .special_skill,
+      .hobby {
+        margin-top: 48px;
+      }
+
+      .right_container {
+        width: 65%;
+        max-width: 800px;
+        margin-left: 32px;
+      }
+
+      .head_info p {
+        color: #777;
+      }
+      .career_objective {
+      }
+
+      .career_objective h3 {
+        display: flex;
+      }
+
+      .career_objective h3 .img {
+        width: 35px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #333;
+        border-radius: 50%;
+      }
+
+      .career_objective h3 .img img {
+        width: 16px;
+        height: 16px;
+      }
+
+      .career_objective h3 .right {
+        width: 100%;
+        margin-left: 10px;
+      }
+      .work_experience {
+        margin-top: 48px;
+        display: flex;
+        align-items: center;
+      }
+
+      .work_experience .head {
+      }
+
+      .work_experience .head span {
+        border: 1px solid #333;
+        border-radius: 16px;
+        padding: 4px 16px;
+        font-size: 1.17em;
+        font-weight: bold;
+        margin: 0 8px;
+      }
+
+      .work_experience span.dio,
+      .work_experience span.dio_1 {
+        display: block;
+        max-width: 30%;
+        width: 200px;
+        height: 1px;
+        background: #000;
+        position: relative;
+      }
+      .work_experience span.dio::after,
+      .work_experience span.dio_1::after {
+        content: "";
+        position: absolute;
+        width: 4px;
+        height: 5px;
+        background: #000;
+        top: -2px;
+        border-radius: 4px;
+      }
+      .work_experience span.dio::after {
+        left: 0;
+      }
+      .work_experience span.dio_1::after {
+        right: 0;
+      }
+      .education {
+        margin-top: 48px;
+      }
+      .education .content .first,
+      .education .content .second {
+        display: flex;
+        margin-top: 24px;
+      }
+
+      .education .content .first .left_box,
+      .education .content .second .left_box {
+        width: 40%;
+        border-right: 1px solid #333;
+      }
+
+      .education .content .first .right_box,
+      .education .content .second .right_box {
+        width: 60%;
+        margin-left: 16px;
+      }
+
+      .experience ul {
+        list-style: circle;
+      }
+
+      .mt {
+        margin-top: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="left_container">
+        <div class="avatar">
+          <img src="imgs/avatar.png" alt="avatar" />
+        </div>
+        <div class="basic_info">
+          <h3>基本信息</h3>
+          <div>
+            <img src="imgs/rili.png" alt="" />
+            <span>25岁</span>
+          </div>
+          <div>
+            <img src="imgs/telephone.png" alt="" />
+            <span>17673622368</span>
+          </div>
+          <div>
+            <img src="imgs/email.png" alt="" />
+            <span>1519105541@qq.com</span>
+          </div>
+        </div>
+        <div class="self_evaluation">
+          <h3>自我评价</h3>
+          <div>
+            我是一个乐观、积极向上的人，有良好的沟通能力和团队合作意识，良好的抗压能力。乐于分享，有一定的自驱力。对Web技术有兴趣，对新技术和新知识感兴趣，平时会看一些前端技术相关的文章，有良好的自我学习意识。
+          </div>
+        </div>
+        <div class="special_skill">
+          <h3>技能特长</h3>
+          <div>
+            <ul style="margin: 0; padding-left: 16px">
+              <li>熟练掌握Vue、React</li>
+              <li>会多种UI组件库，如 Element, Ant Design, Vant, Bootstrap等</li>
+              <li>语法掌握ES5, ES6, TypeScript</li>
+              <li>工具熟练使用 webpack, gulp, git等工具</li>
+              <li>
+                了解nodejs，能使用nodejs连接MySQL搭建简单服务器，了解小程序
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="hobby">
+          <h3>兴趣爱好</h3>
+          <div>影音，互联网，电子，旅游等，兴趣广泛</div>
+        </div>
+      </div>
+
+      <div class="right_container">
+        <div class="head_info">
+          <h2>刘艳兰</h2>
+          <p>3年开发经验，参与多个项目的开发</p>
+        </div>
+
+        <div class="career_objective">
+          <h3>
+            <div class="img" style="background: #333">
+              <img src="imgs/text.png" alt="" />
+            </div>
+            <div class="right">
+              <span>求职意向</span>
+              <hr style="margin-top: 4px" />
+            </div>
+          </h3>
+          <div style="color: #555">web前端开发</div>
+        </div>
+
+        <div class="work_experience">
+          <span
+            class="dio_1"
+            style="display: block; width: 200px; height: 1px"
+          ></span>
+          <div class="head">
+            <span>工作经验</span>
+          </div>
+          <span
+            class="dio"
+            style="display: block; width: 200px; height: 1px"
+          ></span>
+        </div>
+        <div class="experience" style="display: block">
+          <ul>
+            <li>
+              <div style="display: flex; justify-content: space-between">
+                <strong>2021.04 - 至今</strong>
+                <strong>深圳市四只悟空网络科技有限公司</strong>
+              </div>
+              <div style="margin-top: 8px">Web前端工程师</div>
+              <div style="margin-top: 24px">
+                项目：
+                <div>
+                  1.公司内部人员使用的管理系统，主要参与项目新需求的研发工作，对已有功能进行维护和更新，
+                  同时对部分模块进行重构。
+                </div>
+                <div>2.根据UI设计师提供的设计图，写好静态页面，页面排版。</div>
+                <div>
+                  3.参与第三方购物网站的开发，包括后台管理系统、Web、WebApp。负责首页、购物车、结算支付流程等模块的开发。
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="work_experience">
+          <span
+            class="dio_1"
+            style="display: block; width: 200px; height: 1px"
+          ></span>
+          <div class="head">
+            <span>项目经验</span>
+          </div>
+          <span
+            class="dio"
+            style="display: block; width: 200px; height: 1px"
+          ></span>
+        </div>
+        <div class="experience" style="display: block">
+          <ul>
+            <li>
+              <div style="display: flex; justify-content: space-between">
+                <strong>项目名称：Grosiraja</strong>
+                <span>2021.05 - 至今</span>
+              </div>
+              <div style="margin-top: 24px">
+                <div class="mt">
+                  <strong>项目背景：</strong
+                  >该项目是公司内部人员使用的运营管理系统，项目使用Umi.js + Ant
+                  Design 框架搭建。
+                </div>
+                <div class="mt">
+                  <strong>项目描述：</strong
+                  >入职后我接手该项目，以及一些相关的管理系统项目。
+                  平常的工作主要是参与需求例会，后续根据需求完成开发任务。因为项目前期是前员工负责的，代码编写规范性较差，所以为了项目的可维护性，对于比较重要的模块进行了重构的工作。
+                  比如对于冗余、可复用的部分将其抽离出来，独立成组件等。
+                </div>
+                <div class="mt">
+                  <strong>项目技术栈：</strong>React + Umi.js + Ant Design
+                </div>
+              </div>
+            </li>
+            <li>
+              <div
+                style="
+                  display: flex;
+                  justify-content: space-between;
+                  margin-top: 16px;
+                "
+              >
+                <strong>项目名称：GoCart</strong>
+                <span>2021.12 - 至今</span>
+              </div>
+              <div style="margin-top: 24px">
+                <div class="mt">
+                  <strong>项目背景：</strong
+                  >该项目是公司接的外包项目，由客户提供需求和UI，我们进行项目开发。前端部分由我和另一名前端同事共同负责。
+                </div>
+                <div class="mt">
+                  <strong>项目描述：</strong>
+                  项目使用Next.js + Ant
+                  Design框架搭建，因为考虑到购物网站需要SEO，而SSR的优势在于可以更好的更好的
+                  SEO，让搜索引擎爬虫直接看到完全呈现的页面。所以在技术选型上选择了Next.js。
+                  GoCart项目包括多个系统：CMS、OMS、Web以及Web
+                  app。管理系统主要是开发订单管理、账号管理等功能模块。Web和Web
+                  app是面向用户的购物网站。
+                  我主要负责首页、购物车、博客、帮助中心以及结算支付流程等功能模块。在支付方面是使用的国外的支付方式，需要对接第三方支付。还有接入分享功能等。
+                  <br />
+                  期间遇到一个问题比较深刻：登录后或某次刷新后页面会出现崩溃现象。在多次排查之后发现问题是由Next.js的Image组件所引起的。因为初始化时图片的url可能为空，导致Image组件的渲染优化出现问题，从而导致页面崩溃。
+                  于是我们将本地加载的图片使用原生img来展示，对于仍然使用Image组件展示的图片，在Image上添加属性unoptimized=true。
+                </div>
+                <div class="mt">
+                  <strong>项目技术栈：</strong>React + Next.js + Ant Design
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="career_objective education">
+          <h3>
+            <div class="img"><img src="imgs/text.png" alt="" /></div>
+            <div class="right">
+              <span>教育背景</span>
+              <hr style="margin-top: 4px" />
+            </div>
+          </h3>
+          <div class="content">
+            <div class="first">
+              <div class="left_box">
+                <strong>2019.09 - 2021.06</strong>
+                <div style="margin-top: 8px">软件工程</div>
+              </div>
+              <div class="right_box">
+                <strong>湖南工学院</strong>
+                <div>
+                  开始深入了解和学习前端开发方面的知识，发现相比于后端开发自己更喜欢这种可以看得见的开发方式，最后选择从事前端开发。
+                </div>
+              </div>
+            </div>
+
+            <div class="second">
+              <div class="left_box">
+                <strong>2016.09 - 2019.06</strong>
+                <div style="margin-top: 8px">移动应用开发</div>
+              </div>
+              <div class="right_box">
+                <strong>湖南工业职业技术学院</strong>
+                <div>在大学期间开始接触C语言，系统的学习开发的基础知识。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
