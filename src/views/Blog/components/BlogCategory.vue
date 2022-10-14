@@ -9,6 +9,7 @@
 import Directory from "./Directory.vue";
 import fetchData from "@/mixins/fetchData";
 import { getBlogCategories } from "@/api/blog";
+import { titleControl } from "@/utils";
 
 export default {
   mixins: [fetchData([])],
@@ -48,6 +49,7 @@ export default {
           query,
           params: { categoryId: item.id },
         });
+        titleControl.setRouteTitle(item.name);
       }
     },
   },

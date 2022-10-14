@@ -21,11 +21,6 @@ export default {
   props: {},
   components: { Avatar, Menu, Contact },
   computed: mapState("setting", ["data"]),
-  data () {
-    return {
-      data: {}
-    }
-  }
 };
 </script>
 

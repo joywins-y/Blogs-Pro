@@ -1,15 +1,43 @@
 <template>
   <ul class="contact-container">
-    <li v-for="item in list" :key="item.value">
-      <a :href="item.link">
-        <div class="icon" v-if="item.icon">
-          <Icon :type="item.icon" />
+    <li>
+      <a target="_blank" :href="data.github">
+        <div class="icon">
+          <Icon type="github" />
         </div>
-        <span>{{ item.label }}</span>
+        <span>{{ data.githubName }}</span>
       </a>
-      <div class="pop" v-if="item.img">
-        <!-- <img :src="item.img" alt="img" /> -->
-        <img src="@/assets/Wechat.jpeg" alt="" />
+    </li>
+    <li>
+      <a :href="`mailto:${data.mail}`">
+        <div class="icon">
+          <Icon type="email" />
+        </div>
+        <span>{{ data.mail }}</span>
+      </a>
+    </li>
+    <li>
+      <a
+        :href="`tencent://message/?Menu=yes&uin=${data.qq}&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45`"
+      >
+        <div class="icon">
+          <Icon type="qq" />
+        </div>
+        <span>{{ data.qq }}</span>
+      </a>
+      <div class="pop">
+        <img :src="data.qqQrCode" alt="" />
+      </div>
+    </li>
+    <li>
+      <a>
+        <div class="icon weixin">
+          <Icon type="weixin" />
+        </div>
+        <span>{{ data.weixin }}</span>
+      </a>
+      <div class="pop">
+        <img :src="data.weixinQrCode" alt="" />
       </div>
     </li>
   </ul>
@@ -22,40 +50,6 @@ export default {
   props: {},
   components: { Icon },
   computed: mapState("setting", ["data"]),
-  data() {
-    return {
-      list: [
-        {
-          label: "1519105541",
-          value: "qq",
-          icon: "qq",
-          link: "",
-          img: "./assets/logo.png",
-        },
-        {
-          label: "joywins-y",
-          value: "github",
-          icon: "github",
-          link: "https://github.com/joywins-y",
-          img: "",
-        },
-        {
-          label: "1519105541@qq.com",
-          value: "email",
-          icon: "email",
-          link: "",
-          img: "@/assets/Wechat.jpeg",
-        },
-        {
-          label: "1519105541",
-          value: "wx",
-          icon: "chat",
-          link: "",
-          img: "@/assets/Wechat.jpeg",
-        },
-      ],
-    };
-  },
 };
 </script>
 

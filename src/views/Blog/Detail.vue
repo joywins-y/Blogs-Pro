@@ -20,6 +20,7 @@ import BlogDetails from "./components/BlogDetails.vue";
 import BlogTOC from "./components/BlogTOC.vue";
 import BlogComment from "./components/BlogComment.vue";
 import mainScroll from "@/mixins/mainScroll";
+import { titleControl } from "@/utils";
 
 export default {
   mixins: [fetchData(null), mainScroll("mainContainer")],
@@ -32,7 +33,9 @@ export default {
   },
   methods: {
     async fetchData() {
-      return await getBlog(this.$route.params.id);
+      const resp = await getBlog(this.$route.params.id);
+      titleControl.setRouteTitle(resp.title);
+      return resp;
     },
   },
   updated() {
