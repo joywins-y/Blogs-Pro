@@ -4,8 +4,6 @@
       <li v-for="item in data.rows" :key="item.id">
         <div class="thumb" v-if="item.thumb">
           <RouterLink :to="{ name: 'blogDetail', params: { id: item.id } }">
-            <!-- src="https://img3.jiemian.com/101/original/20170531/14962293429372900_a640x364.jpg" -->
-            <!-- <img :src="item.thumb" :alt="item.title" :title="item.title" /> -->
             <img v-lazy="item.thumb" :alt="item.title" :title="item.title" />
           </RouterLink>
         </div>
@@ -79,7 +77,6 @@ export default {
         page: this.routeInfo.page,
         limit: this.routeInfo.limit,
       };
-      console.log(params);
       return await getBlogs(params);
     },
     handlePageChange(newPage) {
@@ -112,10 +109,9 @@ export default {
     // },
 
     async $route() {
-      console.log("1");
       this.isLoading = true;
       // 滚动高度为 0
-      this.$refs.conatiner.scrollTo = 0;
+      this.$refs.conatiner.scrollTop = 0;
       this.data = await this.fetchData();
       this.isLoading = false;
     },

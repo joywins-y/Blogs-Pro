@@ -1,5 +1,6 @@
 import "./banner";
 import "./blogs";
+import "./setting";
 import Mock from "mockjs";
 
 Mock.setup({

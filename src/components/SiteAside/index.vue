@@ -1,13 +1,13 @@
 <template>
   <div class="site-aside-container">
-    <Avatar
-      url="https://mmbiz.qpic.cn/sz_mmbiz_jpg/IhB6Hhm1o7fqEWXUPvudN0FxFVEg2kOicrNTrJth4dPgJ4TR8niccamz2oI7l8uDSfiaDrsJWpov0KuDJHSVIHPVw/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1"
-      :size="100"
-    />
-    <h1 class="title">Windy</h1>
+    <template v-if="data">
+      <Avatar :url="data.avatar" :size="100" />
+      <h1 class="title">{{ data.siteTitle }}</h1>
+    </template>
+
     <Menu />
-    <Contact />
-    <p class="footer">备案号：20221013 号</p>
+    <Contact v-if="data" />
+    <p v-if="data" class="footer">{{ data.icp }}</p>
   </div>
 </template>
 
@@ -15,10 +15,17 @@
 import Avatar from "@/components/Avatar/index.vue";
 import Menu from "./Menu";
 import Contact from "./Contact";
+import { mapState } from "vuex";
 
 export default {
   props: {},
   components: { Avatar, Menu, Contact },
+  computed: mapState("setting", ["data"]),
+  data () {
+    return {
+      data: {}
+    }
+  }
 };
 </script>
 

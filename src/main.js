@@ -6,7 +6,10 @@ import router from "./router";
 import { showMessage } from "./utils";
 import vLoading from "./directives/loading";
 import vLazy from "./directives/lazy";
-import './eventBus';
+import "./eventBus";
+import store from "./store";
+
+store.dispatch("setting/fetchSetting");
 
 Vue.config.productionTip = false;
 
@@ -17,5 +20,6 @@ Vue.directive("lazy", vLazy);
 
 new Vue({
   router,
+  store,
   render: (h) => h(App),
 }).$mount("#app");

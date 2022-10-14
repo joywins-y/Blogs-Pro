@@ -17,9 +17,11 @@
 
 <script>
 import Icon from "@/components/Icon";
+import { mapState } from "vuex";
 export default {
   props: {},
   components: { Icon },
+  computed: mapState("setting", ["data"]),
   data() {
     return {
       list: [

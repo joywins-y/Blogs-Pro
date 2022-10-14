@@ -3,7 +3,7 @@
     class="home-container"
     ref="container"
     @wheel="handleWheel"
-    v-loading="isLoading"
+    v-loading="loading"
   >
     <ul
       class="carousel-container"
@@ -39,31 +39,21 @@
 </template>
 
 <script>
-import { getBanners } from "@/api/banner";
-import CarouselItem from "./CarouselItem.vue";
-import Icon from "@/components/Icon/index.vue";
-import Loading from "@/components/Loading/index.vue";
-import fetchData from "@/mixins/fetchData.js";
+import CarouselItem from "./CarouselItem";
+import Icon from "@/components/Icon";
+import { mapState } from "vuex";
 
 export default {
-  props: {},
-  mixins: [fetchData([])],
-  components: { CarouselItem, Icon, Loading },
+  components: { CarouselItem, Icon },
   data() {
     return {
-      // banners: [],
-      index: 0, // 当前显示的轮播图索引
-      containerHeight: 0, // 容器高度
-      switching: false, // 是否正在翻页中
-      // isLoading: true,
+      index: 0, // 当前显示的是第几张轮播图
+      containerHeight: 0, // 整个容器的高度
+      switching: false, // 是否正在切换中
     };
   },
-  // async created() {
-  //   this.banners = await getBanners();
-  //   this.isLoading = false;
-  // },
-  updated() {
-    // console.log("update");
+  created() {
+    this.$store.dispatch("banner/fetchBanner");
   },
   mounted() {
     this.containerHeight = this.$refs.container.clientHeight;
@@ -76,6 +66,7 @@ export default {
     marginTop() {
       return -this.index * this.containerHeight + "px";
     },
+    ...mapState("banner", ["loading", "data"]),
   },
   methods: {
     // 切换轮播图
@@ -88,11 +79,13 @@ export default {
         return;
       }
       if (e.deltaY < -5 && this.index > 0) {
+        // 往上滚动
+        this.switching = true;
         this.index--;
-        this.switching = true;
       } else if (e.deltaY > 5 && this.index < this.data.length - 1) {
-        this.index++;
+        // 往下滚动
         this.switching = true;
+        this.index++;
       }
     },
     handleTransitionEnd() {
@@ -100,9 +93,6 @@ export default {
     },
     handleResize() {
       this.containerHeight = this.$refs.container.clientHeight;
-    },
-    async fetchData() {
-      return await getBanners();
     },
   },
 };
@@ -144,40 +134,41 @@ export default {
     .self-center();
     position: absolute;
     font-size: 40px;
+    @gap: 20px;
     color: @gray;
     transform: translateX(-50%);
     cursor: pointer;
 
     &.icon-up {
-      top: 20px;
+      top: @gap;
       animation: jump-up 2s infinite;
     }
     &.icon-down {
       top: auto;
-      bottom: 20px;
+      bottom: @gap;
       animation: jump-down 2s infinite;
     }
-    @jump: 5px;
+    @jump: 10px;
     @keyframes jump-up {
       0% {
-        transform: translate(-50%, 10px);
+        transform: translate(-50%, @jump);
       }
       50% {
-        transform: translate(-50%, -10px);
+        transform: translate(-50%, -@jump);
       }
       100% {
-        transform: translate(-50%, 10px);
+        transform: translate(-50%, @jump);
       }
     }
     @keyframes jump-down {
       0% {
-        transform: translate(-50%, -10px);
+        transform: translate(-50%, -@jump);
       }
       50% {
-        transform: translate(-50%, 10px);
+        transform: translate(-50%, @jump);
       }
       100% {
-        transform: translate(-50%, -10px);
+        transform: translate(-50%, -@jump);
       }
     }
   }

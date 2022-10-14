@@ -23,7 +23,7 @@ Mock.mock("/api/banner", "get", {
       minImg: "http://mdrs.yuanjin.tech/img/20201031204401.jpg",
       bigImg: "http://mdrs.yuanjin.tech/img/20201031204403.jpg",
       title: "听我怒吼",
-      desc: "兰尼斯托有债必偿",
+      desc: "兰尼斯特有债必偿",
     },
   ],
 });
