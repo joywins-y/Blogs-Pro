@@ -1,10 +1,11 @@
-import 'nprogress/nprogress';
+import "nprogress/nprogress.css"; 
 import { start, done, configure } from 'nprogress';
+import NotFound from '@/views/NotFound';
 
 configure({
   trickleSpeed: 20, // 修改加载速度
   showSpinner: false, // 不显示转动的小圈
-})
+});
 // window.start = start;
 // window.done = done;
 
@@ -17,11 +18,13 @@ function delay(duration) {
 function getPageComponent(pageComp) {
   return async () => {
     start();
-    if (process.env.NODE_ENV === 'production') {
+    console.log("组件开始加载");
+    if (process.env.NODE_ENV === 'development') {
       await delay(2000);
     }
     const comp = await pageComp();
     done();
+    console.log("组件加载结束");
     return comp;
   };
 }
@@ -80,5 +83,10 @@ export default [
       import(/* webpackChunkName：'message' */ '@/views/Message')
     ),
     meta: { title: '留言板' },
+  },
+  {
+    name: 'NotFound',
+    path: '*',
+    component: NotFound,
   },
 ];

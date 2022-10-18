@@ -11,15 +11,22 @@
           <RouterView />
         </div>
       </template>
-      <!-- <template #right>
-        <div class="right">右边区域</div>
-      </template> -->
     </Layout>
     <ToTop />
+    <!-- <AsyncComponent /> -->
   </div>
 </template>
 
 <script>
+// const AsyncComponent = () => {
+//   return new Promise((resolve) => {
+//     setTimeout(async () => {
+//       const MyComp = await import("./MyComp");
+//       resolve(MyComp);
+//     }, 3000);
+//   });
+// };
+
 import SiteAside from "@/components/SiteAside";
 import Layout from "./components/Layout";
 import ToTop from "./components/ToTop/index.vue";
@@ -30,6 +37,7 @@ export default {
     SiteAside,
     Layout,
     ToTop,
+    // AsyncComponent,
   },
 };
 </script>
