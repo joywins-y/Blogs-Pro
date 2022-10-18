@@ -33,6 +33,8 @@
         </div>
       </li>
     </ul>
+    <!-- 无数据时显示空状态 -->
+    <Empty v-if="data.rows.length === 0 && !isLoading" />
     <!-- 分页 -->
     <Pager
       v-if="data.total"
@@ -51,11 +53,12 @@ import Pager from "@/components/Pager/index.vue";
 import fetchData from "@/mixins/fetchData";
 import mainScroll from "@/mixins/mainScroll";
 import { formatDate } from "@/utils";
+import Empty from "@/components/Empty";
 
 export default {
-  mixins: [fetchData({}), mainScroll("conatiner")],
+  mixins: [fetchData({total: 0, rows: []}), mainScroll("conatiner")],
   props: {},
-  components: { Pager },
+  components: { Pager, Empty },
   computed: {
     /** 路由信息 */
     routeInfo() {

@@ -31,15 +31,20 @@
         <p v-for="(desc, i) in item.description" :key="i">{{ desc }}</p>
       </div>
     </div>
+
+    <Empty v-if="data.length === 0 && !loading" />
   </div>
 </template>
 
 <script>
 import mainScroll from "@/mixins/mainScroll";
 import { mapState } from "vuex";
+import Empty from '@/components/Empty';
+
 export default {
   mixins: [mainScroll("projectContainer")],
   props: {},
+  components: { Empty },
   computed: mapState("project", {
     loading: "loading",
     data: "data",
