@@ -1,6 +1,6 @@
 const { defineConfig } = require('@vue/cli-service');
 
-// vue-cli的配置文件
+// vue-cli 的配置文件
 module.exports = defineConfig({
   transpileDependencies: true,
   devServer: {
